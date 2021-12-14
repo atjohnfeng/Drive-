@@ -13,7 +13,7 @@ public class Delivery : MonoBehaviour
     SpriteRenderer spriteRenderer;
 
     void Start() {
-        spriteRenderer = GetComponent<spriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void OnCollisionEnter2D(Collision2D other) {
@@ -25,10 +25,12 @@ public class Delivery : MonoBehaviour
 
         if (other.tag == "Package" && !hasPackage) {
             Debug.Log("Package has been picked up.");
+            spriteRenderer.color = hasPackageColor;
             hasPackage = true;
             Destroy(other.gameObject, destroyDelay);
         } else if (other.tag == "Customer" && hasPackage) {
             Debug.Log("Delivery location.");
+            spriteRenderer.color = noPackageColor;
             hasPackage = false;
         }
     }
