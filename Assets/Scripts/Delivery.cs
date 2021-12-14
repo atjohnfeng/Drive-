@@ -10,11 +10,17 @@ public class Delivery : MonoBehaviour
     [SerializeField] float destroyDelay = 0.5f;
     bool hasPackage;
 
-    private void OnCollisionEnter2D(Collision2D other) {
+    SpriteRenderer spriteRenderer;
+
+    void Start() {
+        spriteRenderer = GetComponent<spriteRenderer>();
+    }
+
+    void OnCollisionEnter2D(Collision2D other) {
         Debug.Log("COLLISION DETECTED.");
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
+    void OnTriggerEnter2D(Collider2D other) {
         Debug.Log("YOU HAVE ENTERED THE VOID.");
 
         if (other.tag == "Package" && !hasPackage) {
