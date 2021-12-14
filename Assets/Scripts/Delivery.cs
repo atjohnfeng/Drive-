@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Delivery : MonoBehaviour
 {
+    [SerializeField] float destroyDelay = 0.5f;
     bool hasPackage;
 
     private void Start() {
@@ -19,8 +20,11 @@ public class Delivery : MonoBehaviour
 
         if (other.tag == "Package") {
             Debug.Log("Package has been picked up.");
-        } else if (other.tag == "Customer") {
+            hasPackage = true;
+            Destroy(other.gameObject, destroyDelay);
+        } else if (other.tag == "Customer" && hasPackage) {
             Debug.Log("Delivery location.");
+            hasPackage = false;
         }
     }
 }
