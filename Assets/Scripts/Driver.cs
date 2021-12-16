@@ -22,4 +22,19 @@ public class Driver : MonoBehaviour
         transform.Translate(0, moveAmount, 0);
         //
     }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.tag == "Bump") {
+            other.movespeed = slowSpeed;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Boost" && !hasPackage)
+        {
+            other.moveSpeed = boostSpeed;
+        }
+    }
 }
