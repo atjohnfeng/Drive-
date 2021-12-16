@@ -24,7 +24,9 @@ public class Driver : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        moveSpeed = slowSpeed;
+        // if (other.tag == "Bump") {
+            moveSpeed = slowSpeed;
+        // }
     }
 
     void OnTriggerEnter2D(Collider2D other)
